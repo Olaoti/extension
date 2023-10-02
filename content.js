@@ -5,9 +5,9 @@ link.type = 'text/css';
 link.href = chrome.runtime.getURL('content.css');
 document.head.appendChild(link);
 
-const message = document.createElement('div');
-message.classList.add('helmessage')
-document.body.appendChild(message);
+const messag = document.createElement('div');
+messag.classList.add('helmessage')
+document.body.appendChild(messag);
 const pauseit =document.createElement('div')
 const pause = document.createElement('div')
 const pausep = document.createElement('p')
@@ -25,7 +25,7 @@ const playimg = document.createElement('img')
 playimg.src="https://icon-library.com/images/play-stop-pause-icon/play-stop-pause-icon-15.jpg"
 play.appendChild(playimg)
 play.classList.add('pause')
-playp.textContent='Play'
+playp.textContent='Stop'
 playit.appendChild(play)
 playit.appendChild(playp)
 
@@ -63,11 +63,12 @@ del.classList.add('del')
 delit.appendChild(del)
 
 
-message.appendChild(pauseit)
-message.appendChild(playit)
-message.appendChild(camit)
-message.appendChild(micit)
-message.appendChild(delit)
+messag.appendChild(pauseit)
+messag.appendChild(playit)
+messag.appendChild(camit)
+messag.appendChild(micit)
+messag.appendChild(delit)
+messag.style.visibility='hidden'
 
 let mediaRecorder;
 
@@ -82,13 +83,23 @@ function onAccessApproved(stream) {
 
 	recorder.start();
 
+
 	recorder.onstop = function () {
 		stream.getTracks().forEach(function (track) {
 			if (track.readyState === "Live") {
 				track.stop();
+        console.log('stopping')
 			}
 		});
+
 	};
+  pause.addEventListener('click', function(){
+    recorder.stop();
+    let node = document.createElement("p");
+    node.textContent = "Stopped recording";
+    document.body.appendChild(node);
+  })
+
 
 	recorder.ondataavailable = function (event) {
     let recordedBlob = event.data;
@@ -117,17 +128,14 @@ function onAccessApproved(stream) {
 
 	};
 }
-pauseit.addEventListener('click', function(){
-  recorder.onstop();
-  let node = document.createElement("p");
-  node.textContent = "Stopped recording";
-  document.body.appendChild(node);
-})
+
 
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	if (message.action === "start_recording") {
-		console.log("start recording");
+		messag.style.visibility='visible'
+messag.style.display='flex'
+   
 
 		sendResponse(`seen ${message.action}`);
 
