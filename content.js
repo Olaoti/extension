@@ -88,7 +88,7 @@ function onAccessApproved(stream) {
 		stream.getTracks().forEach(function (track) {
 			if (track.readyState === "Live") {
 				track.stop();
-        console.log('stopping')
+        console.log('stopping track')
 			}
 		});
 
