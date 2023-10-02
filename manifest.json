@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "name": "HelpMeOut Extension",
+    "version": "0.0.1",
+    "description":"This is an extension to help you with screen recording",
+    "action":{
+        "default_popup":"popup/popup.html"
+    },
+    "background":{
+        "service_worker":"background.js",
+        "type":"module"
+    },
+    "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "js": ["content.js"],
+          "css": ["content.css"] 
+
+        }
+      ],
+    
+    "permissions":[
+        "storage","tabs", "activeTab","tabCapture", "desktopCapture"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+      ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
+    }
+
+  }
+  

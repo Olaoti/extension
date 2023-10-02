@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Vollkorn&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html{
+        font-size: 62.5%;
+    }
+    body{
+        width: 30rem;
+        height: max-content;
+        background-color: whitesmoke;
+    }
+    .container{
+        border-radius: 10px;
+        background-color: white;
+        padding: 2.4rem;
+    }
+    .flex{
+        display: flex;
+        width: 100%;
+        align-items: center;
+    }
+    .left{
+        margin-left: auto;
+    }
+    img{
+        height: 2rem;
+        object-fit: contain;
+    }
+    .logo{
+        width: 2.8rem;
+        height: 2.8rem;
+        margin-right: .8rem;
+    }
+    h4{
+        color: #120B48;
+        font-family: 'Sora';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    h3{
+        color:  #413C6D;
+        font-family: 'Work Sans';
+        font-size: 1.4rem;
+        letter-spacing: .14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding-top: 1.6rem;
+    }
+    .tab{
+        margin-top: 3.2rem;
+        justify-content: space-between;
+        padding: 0 2rem;
+    }
+    .tab div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .tab div img{
+        margin-bottom: .8rem;
+        width: 3.2rem;
+        height: 3.2rem;
+    }
+    .tab div p{
+        color:  #928FAB;
+        font-family:' Work Sans';
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .tab div p.curr{
+        color: #120B48;
+    }
+    .border{
+        padding: 1.2rem 1.6rem;
+        border: 1px solid #100A42;
+        border-radius: 1.2rem;
+        margin-top: 2.4rem;
+    }
+    .border p{
+        font-family: 'Work Sans';
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        color: #100A42;
+        margin-left: .8rem;
+    }
+    button{
+        color: #FAFDFF;
+        font-family: 'Work Sans';
+        font-size: 1.6rem;
+        padding: 1.6rem;
+        width: 100%;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        background-color: #120B48;
+        border-radius: 1.2rem;
+        margin-top: 2.4rem;
+        outline: none;
+        border: none;
+    }
+    button:hover{
+        background-color: #413C6D;
+    }
+
+
+/* toggle*/
+.toggle {
+         position: relative;
+         display: block;
+         width: 3.6rem;
+         height: 2rem;
+         padding: 2px;
+         border-radius: 5rem;
+         cursor: pointer;
+      }
+      .toggle-input {
+         position: absolute;
+         top: 0;
+         left: 0;
+         opacity: 0;
+      }
+      .toggle-label {
+         position: relative;
+         display: block;
+         height: inherit;
+         font-size: 12px;
+         background: #120B48;
+         border-radius: inherit;
+         box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 3px
+         rgba(0, 0, 0, 0.15);
+      }
+      .toggle-label:before,
+      .toggle-label:after {
+         position: absolute;
+         top: 50%;
+         color: black;
+         margin-top: -.5em;
+         line-height: 1;
+      }
+      .toggle-label:before {
+         content: attr(data-off);
+         right: 11px;
+         color: #fff;
+         text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+      }
+      .toggle-label:after {
+         content: attr(data-on);
+         left: 11px;
+         color: #fff;
+         text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+         opacity: 0;
+      }
+      .toggle-input:checked~.toggle-label {
+         background: #120B48;
+      }
+      .toggle-input:checked~.toggle-label:before {
+         opacity: 0;
+      }
+      .toggle-input:checked~.toggle-label:after {
+         opacity: 1;
+      }
+      .toggle-handle {
+         position: absolute;
+         top: 4px;
+         left: 4px;
+         width: 1.6rem;
+         height: 1.6rem;
+         background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+         border-radius: 50%;
+      }
+      .toggle-handle:before {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         margin: -6px 0 0 -6px;
+         width: 16px;
+         height: 16px;
+      }
+      .toggle-input:checked~.toggle-handle {
+         left:1.5rem;
+         box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Transition*/
+      .toggle-label,
+      .toggle-handle {
+         transition: All 0.3s ease;
+         -webkit-transition: All 0.3s ease;
+         -moz-transition: All 0.3s ease;
+         -o-transition: All 0.3s ease;
+      }
+
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="flex">
+            <img src="../images/tools/logo.png" class="logo"/>
+            <h4>HelpMeOut</h4>
+            <img src="../images/tools/setting.png" class="left" style="margin-right: 8px;"/>
+            <img src="../images/tools/cancel.png"/>
+        </div>
+        <h3>This extension helps you record and share help videos with ease.</h3>
+        <div class="flex tab">
+            <div class="full"><img src="../images/tools/monitor.png"/><p>Full Screen</p></div>
+            <div class="current"><img src="../images/tools/copy.png"/><p class="curr">Current Tab</p></div>
+        </div>
+        <div class="flex border">
+            <img src="../images/tools/camera.svg"/>
+            <p>Camera</p>
+            <label class="toggle left">
+                <input class="toggle-input" type="checkbox" checked id="checkcamera" />
+                <span class="toggle-label"></span>
+                <span class="toggle-handle"></span>
+             </label>
+        </div>
+        <div class="flex border">
+            <img src="../images/tools/mic.svg"/>
+            <p>Audio</p>
+            <label class="toggle left">
+                <input class="toggle-input" type="checkbox" checked id="checkaudio" />
+                <span class="toggle-label"></span>
+                <span class="toggle-handle"></span>
+             </label>
+        </div>
+        <button id="button">Start Recording</button>
+    </div>
+<script src="popup.js"></script>
+
+</body>
+</html>
